@@ -1,0 +1,336 @@
+
+                                          Git Repos
+                                        ------------------
+Global repo
+------------------
+ step-1:  visit   --> www.github.com  ---> create a new account
+ step-2:  create a New Git repo  --> dev830am
+
+Local repo
+----------------
+create an EC2 Instance --> 
+
+   # apt-get update
+   # apt-get install git-core -y
+   # git --version
+git version 2.25.1
+
+   # git init
+Initialized empty Git repository in /root/.git/
+
+
+# git clone https://github.com/sathyadevops/dev830am.git
+
+Cloning into 'dev830am'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 581 bytes | 581.00 KiB/s, done
+
+
+# git config --global user.name sathyadevops
+# git config --global user.email sathyadevops1@gmail.com
+
+# cat .gitconfig
+[user]
+        name = sathyadevops
+        email = sathyadevops1@gmail.com
+
+# vi README.md
+.......... meta data ...........
+
+# git add README.md
+root@ip-172-31-37-58:~/dev830am#
+root@ip-172-31-37-58:~/dev830am# git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   README.md
+
+root@ip-172-31-37-58:~/dev830am#
+root@ip-172-31-37-58:~/dev830am# git commit -m "meta data"
+[main 192f421] meta data
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+root@ip-172-31-37-58:~/dev830am#
+root@ip-172-31-37-58:~/dev830am# git push
+
+
+option-1:  Git push with token
+---------------------------------------------
+
+  https://github.com/settings/profile  --> Settings --> Developer Settings
+  -->  Personal Access tokens --> Token classic --> select "Generate new token"
+Ex. Token:
+   ghp_hd4NNs7vP81mzyRR5U
+
+# git push
+Username for 'https://github.com': sathyadevops
+Password for 'https://sathyadevops@github.com':
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 302 bytes | 302.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/sathyadevops/dev830am.git
+   1e6b691..192f421  main -> main
+
+
+option-2:  Git push with keys
+-------------------------------------------
+      # cd ~    --> to move to home dir
+      # ls -a    --> to list hidden files
+      # cd .ssh
+      # ssh-keygen   --> to generate a key-pair 
+      # ls
+id_rsa  (private key)
+id_rsa.pub (public key)
+
+
+https://github.com/sathyadevops/dev830am  --> select "settings"
+deploy keys --> add public key --> select "Allow write access" -> add key
+
+# git remote set-url origin git@github.com:sathyadevops/dev830am.git
+
+# vi demo.java
+class Demo
+{
+  public static void main(....)
+  {
+    system.out.print(" Hello world ");
+    system.out.print(" Hello world ");
+  }
+}
+
+root@ip-172-31-37-58:~/dev830am#
+root@ip-172-31-37-58:~/dev830am# git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        demo.java
+
+nothing added to commit but untracked files present (use "git add" to track)
+root@ip-172-31-37-58:~/dev830am# git add demo.java
+root@ip-172-31-37-58:~/dev830am# git commit -m "java code"
+[main b49ae68] java code
+ 1 file changed, 11 insertions(+)
+ create mode 100644 demo.java
+root@ip-172-31-37-58:~/dev830am# git push
+The authenticity of host 'github.com (140.82.113.3)' can't be established.
+ECDSA key fingerprint is SHA256:p2QAMXNIC1TJYWeIOttrVc98/R1BUFWu3/LiyKgUfQM.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com,140.82.113.3' (ECDSA) to the list of known hosts.
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 360 bytes | 360.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To github.com:sathyadevops/dev830am.git
+   192f421..b49ae68  main -> main
+
+
+
+Git Branch:
+-----------------
+ # git branch
+ # git branch dev
+ # git checkout dev
+ # vi sample.c
+....... c-code .......... 
+
+ # git add sample.c
+ # git commit -m "c-code"
+ # git push origin dev
+
+Warning: Permanently added the ECDSA host key for IP address '140.82.113.4' to the list of known hosts.
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 347 bytes | 347.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+remote:
+remote: Create a pull request for 'dev' on GitHub by visiting:
+remote:      https://github.com/sathyadevops/dev830am/pull/new/dev
+remote:
+To github.com:sathyadevops/dev830am.git
+ * [new branch]      dev -> dev
+
+
+# git checkout main
+
+
+# git merge dev
+Updating b49ae68..4cae05a
+Fast-forward
+ sample.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+ create mode 100644 sample.c
+
+# git status
+# git push
+Warning: Permanently added the ECDSA host key for IP address '140.82.112.3' to the list of known hosts.
+Total 0 (delta 0), reused 0 (delta 0)
+To github.com:sathyadevops/dev830am.git
+   b49ae68..4cae05a  main -> main
+
+
+# git checkout -b prod
+
+# git checkout main
+
+# git branch -d dev                         --> to delete a local branch
+Deleted branch dev (was 4cae05a).
+
+# git branch -D prod
+
+# git push origin --delete dev         --> to delete a Global branch
+# git push origin --delete prod
+
+# git log
+# git log --oneline
+
+
+Git Merge Conflict :
+-----------------------------
+# git checkout -b devops
+Switched to a new branch 'devops'
+
+# git branch
+* devops
+  main
+
+# vi demo.java
+......... branch code ...........
+......... branch code ...........
+
+# git add demo.java
+# git commit -m "branch code"
+# git push origin devops
+
+# git checkout main
+# vi demo.java
+......... Master code ...........
+......... Master code ...........
+
+# git add demo.java
+# git commit -m "master code"
+# git push
+
+# git merge devops
+CONFLICT (content): Merge conflict in demo.java
+Automatic merge failed; fix conflicts and then commit the result.
+
+# vi demo.java
+.......resolve conflict............
+# git commit -am "code merged"
+[main a10aea8] code merged
+# git push
+
+to recover a deleted file:
+-----------------------------------
+# git rm sample.c
+# git status
+# git restore --staged sample.c
+# git status
+# git restore sample.c
+
+# git rm sample.c
+# git commit -am "file removed"
+
+# mkdir mydir
+# git mv demo.java mydir/demo.java
+# git commit -am "file moved"
+# git push
+
+# git log
+# git log -p
+# git log --oneline
+# git reflog
+# git log --since='20-JAN-2023' --until='21-JAN-2023'
+
+ Git Stash:
+-----------------
+Ex:
+ # vi operations.c
+ # git add operations.c
+ # git commit -m "arith ops"
+ # git push
+
+ # vi operations.c
+ ..............................
+ # git stash save "Add(), sub() operations"
+ # git stash list
+stash@{0}: On main: Add(), sub() operations
+
+ # vi operations.c
+ ..............................
+ # git stash save "Mul(), div() code"
+ # git stash list
+stash@{0}: On main: Mul(), div() code
+stash@{1}: On main: Add(), sub() operations
+
+ # git stash apply stash@{1}
+ # git stash drop stash@{1}
+ # git stash pop stash@{0}
+ # git stash clear
+
+
+                                           Git Rebase
+                                       ----------------------
+ # git checkout -b bank
+ # vi bank.java
+     .................
+ # git commit -am "Deposite() code"
+
+ # vi bank.java
+     .................
+ # git commit -am "Withdraw() code"
+ # git push origin bank
+ # git log --oneline
+3f45b9b (HEAD -> bank, origin/bank) Withdraw() code
+4f704ca Deposite() code
+c7b4417 (origin/main, origin/HEAD, main) bank class
+
+ # git checkout main
+ # git rebase bank
+First, rewinding head to replay your work on top of it...
+ # git push
+
+
+                                        to revert a Git commit
+                                       ----------------------------------
+Hard reset:
+----------------
+ vi sample.c
+# git add sample.c
+# git commit -am "sample code"
+# git log  --oneline
+0a59b27 (HEAD -> main) sample code
+549e8d0 (origin/main, origin/HEAD) sample code
+# git reset --hard HEAD^
+HEAD is now at 549e8d0 sample code
+
+
+Soft reset:
+----------------
+       
+# git reset --soft HEAD^
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
